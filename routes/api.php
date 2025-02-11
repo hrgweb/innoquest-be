@@ -11,4 +11,4 @@ use App\Http\Controllers\UserController;
 
 Route::apiResource('users', UserController::class);
 Route::apiResource('tasks', TaskController::class);
-Route::get('tasks/status/{status}', [TaskController::class, 'filterByStatus']);
+Route::post('tasks/{task}/archive', [TaskController::class, 'archive']);

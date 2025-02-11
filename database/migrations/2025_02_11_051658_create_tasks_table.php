@@ -21,6 +21,7 @@ return new class extends Migration
             $table->timestamp('due_date')->nullable();
             $table->text('file_path')->nullable();
             $table->string('file_name')->nullable();
+            $table->boolean('archived')->default(false);
             $table->timestamps();
         });
     }

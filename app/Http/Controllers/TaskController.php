@@ -10,11 +10,25 @@ use Exception;
 class TaskController extends Controller
 {
 
-    public function filterByStatus(Request $request)
+    public function index(Request $request)
     {
         try {
             $PAGE_SIZE = 10;
-            return Task::where('status', $request->status)->with('user')->paginate($PAGE_SIZE);
+
+            return Task::where([
+                'status' => $request->status,
+                'archived' => false
+            ])->with('user')->paginate($PAGE_SIZE);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function archive(Task $task)
+    {
+        try {
+            $task->update(['archived' => true]);
+            return response()->json(['message' => 'Task archived successfully.', 'success' => true], 201);
         } catch (Exception $e) {
             return $e->getMessage();
         }
