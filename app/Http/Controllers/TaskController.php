@@ -10,6 +10,17 @@ use Exception;
 class TaskController extends Controller
 {
 
+    public function filterByStatus(Request $request)
+    {
+        try {
+            $PAGE_SIZE = 10;
+            return Task::where('status', $request->status)->with('user')->paginate($PAGE_SIZE);
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+
     public function store(Request $request)
     {
         $validated = $request->validate([

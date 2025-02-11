@@ -10,4 +10,5 @@ use App\Http\Controllers\UserController;
 // })->middleware('auth:sanctum');
 
 Route::apiResource('users', UserController::class);
-Route::apiResource('task', TaskController::class);
+Route::apiResource('tasks', TaskController::class);
+Route::get('tasks/status/{status}', [TaskController::class, 'filterByStatus']);
