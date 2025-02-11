@@ -24,6 +24,30 @@ class TaskController extends Controller
         }
     }
 
+
+    public function assignTotal($userId)
+    {
+        try {
+            return Task::where('user_id', $userId)->count();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function completedTotal($userId)
+    {
+        try {
+            $STATUS = 'done';
+            return Task::where([
+                'user_id' => $userId,
+                'status' => $STATUS
+            ])->count();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+
     public function archive(Task $task)
     {
         try {
