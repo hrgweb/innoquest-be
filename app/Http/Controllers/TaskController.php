@@ -18,6 +18,9 @@ class TaskController extends Controller
             'description' => 'required',
             'status' => '',
             'priority' => '',
+            'due_date' => 'nullable|date',
+            'file_path' => 'nullable|string',
+            'file_name' => 'nullable|string',
         ]);
 
         try {
@@ -38,6 +41,9 @@ class TaskController extends Controller
             'description' => 'required',
             'status' => '',
             'priority' => '',
+            'due_date' => 'nullable|date',
+            'file_path' => 'nullable|string',
+            'file_name' => 'nullable|string',
         ]);
 
         try {
