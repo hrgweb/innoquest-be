@@ -9,11 +9,6 @@ use Exception;
 
 class TaskController extends Controller
 {
-    public function index(Request $request)
-    {
-
-        return TaskService::make()->save();
-    }
 
     public function store(Request $request)
     {

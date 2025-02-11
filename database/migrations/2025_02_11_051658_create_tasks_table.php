@@ -18,6 +18,9 @@ return new class extends Migration
             $table->text('description');
             $table->enum('status', ['todo', 'in-progress', 'done'])->default('todo');
             $table->enum('priority', ['high', 'medium', 'low'])->default('low');
+            $table->timestamp('due_date')->nullable();
+            $table->text('file_path')->nullable();
+            $table->string('file_name')->nullable();
             $table->timestamps();
         });
     }
